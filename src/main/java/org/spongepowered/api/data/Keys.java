@@ -119,7 +119,6 @@ import org.spongepowered.api.entity.living.Ageable;
 import org.spongepowered.api.entity.living.Agent;
 import org.spongepowered.api.entity.living.ArmorStand;
 import org.spongepowered.api.entity.living.Bat;
-import org.spongepowered.api.entity.living.Human;
 import org.spongepowered.api.entity.living.Humanoid;
 import org.spongepowered.api.entity.living.Living;
 import org.spongepowered.api.entity.living.animal.Animal;
@@ -215,7 +214,7 @@ import org.spongepowered.api.util.Axis;
 import org.spongepowered.api.util.Color;
 import org.spongepowered.api.util.Direction;
 import org.spongepowered.api.util.RespawnLocation;
-import org.spongepowered.api.util.rotation.Rotation;
+import org.spongepowered.api.util.orientation.Orientation;
 import org.spongepowered.api.util.weighted.WeightedSerializableObject;
 import org.spongepowered.api.world.ServerLocation;
 import org.spongepowered.api.world.explosion.Explosion;
@@ -2103,9 +2102,9 @@ public final class Keys {
     public static final Supplier<Key<Value<Integer>>> ROARING_TIME = Sponge.getRegistry().getCatalogRegistry().provideSupplier(Key.class, "attack_time");
 
     /**
-     * The {@link Rotation} of an {@link ItemFrame}.
+     * The {@link Orientation} of an {@link ItemFrame}.
      */
-    public static final Supplier<Key<Value<Rotation>>> ROTATION = Sponge.getRegistry().getCatalogRegistry().provideSupplier(Key.class, "rotation");
+    public static final Supplier<Key<Value<Orientation>>> ORIENTATION = Sponge.getRegistry().getCatalogRegistry().provideSupplier(Key.class, "rotation");
 
     /**
      * The current saturation of a {@link Player}.
