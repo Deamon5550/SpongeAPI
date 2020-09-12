@@ -22,15 +22,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.world.volume.archetype.entity;
+package org.spongepowered.api.world.volume.stream;
 
+import org.spongepowered.api.world.volume.Volume;
 
-import org.spongepowered.api.entity.EntityArchetype;
-import org.spongepowered.api.world.volume.stream.VolumeStream;
-import org.spongepowered.math.vector.Vector3i;
+/**
+ * A "final step" to a {@link VolumeStream VolumeStream's} collection into a
+ * {@link VolumeCollector} to where the desired {@code T} element is potentially
+ * translated
+ * @param <V>
+ * @param <T>
+ */
+public interface VolumePositionTranslator<V extends Volume, T> {
 
-public interface StreamableEntityArchetypeVolume<B extends StreamableEntityArchetypeVolume<B>> extends ReadableEntityArchetypeVolume {
-
-    VolumeStream<B, EntityArchetype> getEntityArchetypeStream(Vector3i min, Vector3i max);
+    VolumeElement<V, T> apply(VolumeElement<V, T> element);
 
 }

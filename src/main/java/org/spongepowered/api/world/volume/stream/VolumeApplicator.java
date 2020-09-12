@@ -22,15 +22,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.world.volume.archetype.entity;
+package org.spongepowered.api.world.volume.stream;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.spongepowered.api.world.volume.MutableVolume;
 
-import org.spongepowered.api.entity.EntityArchetype;
-import org.spongepowered.api.world.volume.stream.VolumeStream;
-import org.spongepowered.math.vector.Vector3i;
+@FunctionalInterface
+public interface VolumeApplicator<M extends MutableVolume, T, R> {
 
-public interface StreamableEntityArchetypeVolume<B extends StreamableEntityArchetypeVolume<B>> extends ReadableEntityArchetypeVolume {
-
-    VolumeStream<B, EntityArchetype> getEntityArchetypeStream(Vector3i min, Vector3i max);
+    R apply(M volume, VolumeElement<@NonNull ?, T> element);
 
 }

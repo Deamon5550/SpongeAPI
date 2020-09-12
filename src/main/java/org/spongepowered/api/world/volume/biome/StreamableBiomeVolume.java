@@ -24,6 +24,12 @@
  */
 package org.spongepowered.api.world.volume.biome;
 
+import org.spongepowered.api.world.biome.BiomeType;
+import org.spongepowered.api.world.volume.stream.VolumeStream;
+import org.spongepowered.math.vector.Vector3i;
+
 public interface StreamableBiomeVolume<B extends StreamableBiomeVolume<B>> extends ReadableBiomeVolume {
+
+    VolumeStream<B, BiomeType> getBiomeStream(Vector3i min, Vector3i max);
 
 }

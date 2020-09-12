@@ -22,15 +22,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.world.volume.archetype.entity;
+package org.spongepowered.api.world.volume.stream;
 
+import org.spongepowered.api.world.volume.Volume;
 
-import org.spongepowered.api.entity.EntityArchetype;
-import org.spongepowered.api.world.volume.stream.VolumeStream;
-import org.spongepowered.math.vector.Vector3i;
+import java.util.function.Supplier;
 
-public interface StreamableEntityArchetypeVolume<B extends StreamableEntityArchetypeVolume<B>> extends ReadableEntityArchetypeVolume {
+@FunctionalInterface
+public interface VolumePredicate<V extends Volume, T> {
 
-    VolumeStream<B, EntityArchetype> getEntityArchetypeStream(Vector3i min, Vector3i max);
+    boolean test(V volume, Supplier<T> element, int x, int y, int z);
 
+    default VolumePredicate<V, T> and(final VolumePredicate<V, T> other) {
+        return (volume, element, x, y, z) -> this.test(volume, element, x, y, z) && other.test(volume, element, x, y, z);
+    }
+
+    default VolumePredicate<V, T> negate() {
+        return (v, i, x, y, z) -> !this.test(v, i, x, y, z);
+    }
+
+    default VolumePredicate<V, T> or(final VolumePredicate<V, T> other) {
+        return (v, i, x, y, z) -> this.test(v, i, x, y, z) || other.test(v, i, x, y, z);
+    }
 }

@@ -24,6 +24,12 @@
  */
 package org.spongepowered.api.world.volume.block;
 
+import org.spongepowered.api.block.BlockState;
+import org.spongepowered.api.world.volume.stream.VolumeStream;
+import org.spongepowered.math.vector.Vector3i;
+
 public interface StreamableBlockVolume<B extends StreamableBlockVolume<B>> extends ReadableBlockVolume {
+
+    VolumeStream<B, BlockState> getBlockStateStream(Vector3i min, Vector3i max);
 
 }

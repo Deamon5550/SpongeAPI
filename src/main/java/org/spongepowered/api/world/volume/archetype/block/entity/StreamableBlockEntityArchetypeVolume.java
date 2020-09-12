@@ -25,6 +25,12 @@
 package org.spongepowered.api.world.volume.archetype.block.entity;
 
 
+import org.spongepowered.api.block.entity.BlockEntityArchetype;
+import org.spongepowered.api.world.volume.stream.VolumeStream;
+import org.spongepowered.math.vector.Vector3i;
+
 public interface StreamableBlockEntityArchetypeVolume<B extends StreamableBlockEntityArchetypeVolume<B>> extends ReadableBlockEntityArchetypeVolume {
+
+    VolumeStream<B, BlockEntityArchetype> getBlockEntityArchetypeStream(Vector3i min, Vector3i max);
 
 }
