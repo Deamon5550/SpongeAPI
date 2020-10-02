@@ -119,14 +119,27 @@ public interface Advancement extends ComponentLike, CatalogType {
         Builder parent(Advancement parent);
 
         /**
-         * Sets this advancement as root with given background resource.
-         *
-         * @param backgroundPath The {@link AdvancementTree}s background.
+         * Sets this advancement as root.
          *
          * @return This builder, for chaining
          */
-        // TODO: Deprecate when ResourcePath is available
-        Builder root(String backgroundPath);
+        Builder.RootStep root();
+
+        /**
+         * Define root advancement only parameters.
+         */
+        interface RootStep extends Builder {
+
+            /**
+             * Sets the background path..
+             *
+             * @param backgroundPath The {@link AdvancementTree}s background.
+             *
+             * @return This builder, for chaining
+             */
+            // TODO: Deprecate when ResourcePath is available
+            Builder background(String backgroundPath);
+        }
 
         /**
          * Sets the {@link AdvancementCriterion} that should be used
